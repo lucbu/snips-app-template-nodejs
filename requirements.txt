@@ -1,0 +1,3 @@
+hermesjs@2.2.1
+hermesjs-mqtt@2.0.1
+mqtt@2.18.8
