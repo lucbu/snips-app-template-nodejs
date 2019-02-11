@@ -40,7 +40,7 @@ Template.prototype.master_intent_callback = function (client, message){
   var intent_name = intent_message.intent.intentName;
 
   switch (intent_name) {
-    case 'lucbu:test':
+    case 'intent_1':
       this.intent_1_callback(client, intent_message)
       break;
     default:
