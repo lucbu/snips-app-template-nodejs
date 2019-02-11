@@ -1,10 +1,15 @@
+#!/usr/bin/env node
 
 var mqtt = require('mqtt')
+const ini = require('ini')
+const fs = require('fs')
 
 var MQTT_IP_ADDR = "localhost";
 var MQTT_PORT = 1883;
 
 var CONFIG_INI = 'config.ini'
+const configFile = fs.readFileSync('./'+CONFIG_INI, 'utf8')
+const config = ini.parse(configFile)
 
 var options = {
   port: MQTT_PORT,
@@ -43,13 +48,11 @@ Template.prototype.master_intent_callback = function (client, message){
   }
 };
 
-
 // --> Sub callback function, one per intent
 Template.prototype.intent_1_callback = function (client, intent_message) {
 
   // terminate the session first if not continue
   client.publish('hermes/dialogueManager/endSession', JSON.stringify({sessionId:intent_message.sessionId}));
-
 
   // action code goes here...
   console.log('[Received] intent: '+ intent_message.intent.intentName);
