@@ -1,16 +1,15 @@
 #!/usr/bin/env node
 
-var mqtt = require('mqtt')
-const ini = require('ini')
-const fs = require('fs')
-
-var MQTT_IP_ADDR = "localhost";
-var MQTT_PORT = 1883;
+const mqtt = require('mqtt');
+const ini = require('ini');
+const fs = require('fs');
 
 var CONFIG_INI = 'config.ini'
 const configFile = fs.readFileSync('./'+CONFIG_INI, 'utf8')
 const config = ini.parse(configFile)
 
+var MQTT_IP_ADDR = "localhost";
+var MQTT_PORT = 1883;
 var options = {
   port: MQTT_PORT,
   keepalive : 60
@@ -41,7 +40,7 @@ Template.prototype.master_intent_callback = function (client, message){
   var intent_name = intent_message.intent.intentName;
 
   switch (intent_name) {
-    case 'intent_1':
+    case 'lucbu:test':
       this.intent_1_callback(client, intent_message)
       break;
     default:
