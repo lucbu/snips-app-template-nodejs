@@ -1,1 +1,5 @@
-test_config=test
+[global]
+test_global=global
+
+[secret]
+test_secret=secret
